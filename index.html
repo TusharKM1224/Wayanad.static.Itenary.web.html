@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Five Friends Wayanad Road Trip</title>
-   <link rel="icon" href="Resources/travel.png" type="image/x-icon">
+  <link rel="icon" href="Resources/travel.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <style>
+    /* Base font size for rem calculations */
+    html {
+      font-size: 16px;
+    }
+    
     * {
       margin: 0;
       padding: 0;
@@ -25,7 +31,7 @@
       --card-bg-light: rgba(255, 255, 255, 0.95);
       --header-bg-dark: rgba(26, 26, 46, 0.9);
       --header-bg-light: rgba(255, 255, 255, 0.95);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      --shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.2);
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -43,22 +49,116 @@
       color: var(--text-dark);
     }
 
+    /* Countdown Timer Styles */
+    .countdown-container {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(0, 0, 0, 0.2);
+      margin: 0 auto;
+      border-radius: 1rem;
+      max-width: 90%;
+      backdrop-filter: blur(0.625rem);
+      margin-bottom: 2rem;
+      animation: pulse 2s infinite;
+    }
+
+    .light-mode .countdown-container {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .countdown-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .light-mode .countdown-title {
+      color: var(--primary);
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      min-width: 5rem;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+    }
+
+    .light-mode .countdown-unit {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .countdown-unit:hover {
+      transform: translateY(-0.3rem);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .light-mode .countdown-unit:hover {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      text-shadow: 0 0 0.5rem rgba(80, 227, 194, 0.5);
+    }
+
+    .light-mode .countdown-value {
+      color: var(--primary);
+      text-shadow: 0 0 0.5rem rgba(74, 144, 226, 0.5);
+    }
+
+    .countdown-label {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.3rem;
+    }
+
+    .light-mode .countdown-label {
+      color: #666;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 0.625rem rgba(245, 166, 35, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+      }
+    }
+
     /* Theme toggle button */
     .theme-toggle {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 1.25rem;
+      right: 1.25rem;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.2);
       border: none;
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 3.125rem;
+      height: 3.125rem;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(0.625rem);
       box-shadow: var(--shadow);
       transition: var(--transition);
     }
@@ -90,8 +190,8 @@
     }
 
     .floating-element:nth-child(1) {
-      width: 200px;
-      height: 200px;
+      width: 12.5rem;
+      height: 12.5rem;
       background: var(--primary);
       top: 10%;
       left: 5%;
@@ -99,8 +199,8 @@
     }
 
     .floating-element:nth-child(2) {
-      width: 150px;
-      height: 150px;
+      width: 9.375rem;
+      height: 9.375rem;
       background: var(--secondary);
       top: 60%;
       left: 80%;
@@ -108,8 +208,8 @@
     }
 
     .floating-element:nth-child(3) {
-      width: 100px;
-      height: 100px;
+      width: 6.25rem;
+      height: 6.25rem;
       background: var(--accent);
       top: 80%;
       left: 10%;
@@ -121,10 +221,10 @@
         transform: translateY(0) rotate(0deg);
       }
       33% {
-        transform: translateY(-30px) rotate(120deg);
+        transform: translateY(-1.875rem) rotate(120deg);
       }
       66% {
-        transform: translateY(20px) rotate(240deg);
+        transform: translateY(1.25rem) rotate(240deg);
       }
     }
 
@@ -132,16 +232,16 @@
       text-align: center;
       padding: 2.5rem 1rem;
       background: var(--header-bg-dark);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(0.625rem);
       position: relative;
       overflow: hidden;
-      border-bottom: 3px solid var(--primary);
+      border-bottom: 0.1875rem solid var(--primary);
       transition: var(--transition);
     }
 
     .light-mode header {
       background: var(--header-bg-light);
-      border-bottom: 3px solid var(--accent);
+      border-bottom: 0.1875rem solid var(--accent);
     }
 
     .header-content {
@@ -151,25 +251,24 @@
     }
 
     h1 {
+      font-family: 'Anton', sans-serif;
       font-size: 3rem;
       background: linear-gradient(45deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.1rem;
     }
 
     .light-mode h1 {
-
-      
+      font-family: 'Anton', sans-serif;
       font-size: 3rem;
       background: linear-gradient(45deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 0.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      
-      
+      text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
     }
 
     .header-subtitle {
@@ -199,15 +298,15 @@
     }
 
     .friend-avatar {
-      width: 60px;
-      height: 60px;
+      width: 3.75rem;
+      height: 3.75rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
       margin-bottom: 0.5rem;
-      border: 3px solid;
+      border: 0.1875rem solid;
       transition: var(--transition);
     }
 
@@ -236,7 +335,7 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 75rem;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
@@ -247,13 +346,14 @@
       justify-content: center;
       gap: 2rem;
       margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
     .day-tab {
       padding: 1.2rem 2.5rem;
       background: rgba(255, 255, 255, 0.1);
       border: none;
-      border-radius: 50px;
+      border-radius: 3.125rem;
       color: var(--light);
       font-size: 1.3rem;
       font-weight: bold;
@@ -262,8 +362,8 @@
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
-      perspective: 500px;
-      min-width: 180px;
+      perspective: 31.25rem;
+      min-width: 11.25rem;
       text-align: center;
     }
 
@@ -289,13 +389,13 @@
 
     .day-tab.active {
       background: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+      transform: translateY(-0.3125rem);
+      box-shadow: 0 0.5rem 1.25rem rgba(74, 144, 226, 0.4);
     }
 
     .light-mode .day-tab.active {
       background: var(--accent);
-      box-shadow: 0 8px 20px rgba(245, 166, 35, 0.4);
+      box-shadow: 0 0.5rem 1.25rem rgba(245, 166, 35, 0.4);
     }
 
     /* Flip animation for day tabs */
@@ -308,15 +408,15 @@
         transform: translateY(0) rotateX(0);
       }
       30% {
-        transform: translateY(-15px) rotateX(90deg);
+        transform: translateY(-0.9375rem) rotateX(90deg);
         background: var(--accent);
       }
       70% {
-        transform: translateY(-8px) rotateX(270deg);
+        transform: translateY(-0.5rem) rotateX(270deg);
         background: var(--secondary);
       }
       100% {
-        transform: translateY(-5px) rotateX(360deg);
+        transform: translateY(-0.3125rem) rotateX(360deg);
         background: var(--primary);
       }
     }
@@ -324,30 +424,30 @@
     /* Itinerary display */
     .itinerary-display {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
       gap: 2rem;
-      perspective: 1000px;
+      perspective: 62.5rem;
     }
 
     .destination-card {
       background: var(--card-bg-dark);
-      border-radius: 15px;
+      border-radius: 0.9375rem;
       overflow: hidden;
       transition: var(--transition);
       transform-style: preserve-3d;
       opacity: 0;
-      transform: translateY(30px) rotateY(10deg);
+      transform: translateY(1.875rem) rotateY(10deg);
       animation: cardAppear 0.8s forwards;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 0.0625rem solid rgba(255, 255, 255, 0.1);
       cursor: pointer;
-      min-height: 520px;
+      min-height: 32.5rem;
       position: relative;
     }
 
     .light-mode .destination-card {
       background: var(--card-bg-light);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     @keyframes cardAppear {
@@ -358,8 +458,8 @@
     }
 
     .destination-card:hover {
-      transform: translateY(-10px) rotateY(5deg);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-0.625rem) rotateY(5deg);
+      box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.3);
     }
 
     .card-inner {
@@ -375,10 +475,8 @@
       transform: rotateY(180deg);
     }
     .detail-veiw{
-      
       margin-left: 2rem;
     }
-
 
     .card-front, .card-back {
       position: absolute;
@@ -401,12 +499,12 @@
     .card-header {
       padding: 1.5rem;
       background: rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
     }
 
     .light-mode .card-header {
       background: rgb(238, 236, 236);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     .destination-name {
@@ -432,7 +530,7 @@
     }
 
     .card-image {
-      height: 200px;
+      height: 12.5rem;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -448,13 +546,12 @@
       transform: scale(1.1);
     }
 
- .card-content {
-  padding: 1.5rem; /* top/bottom: 2rem, left/right: 1.5rem */
-  flex-grow: 2;
-  display: flex;
-  flex-direction: column;
-}
-
+    .card-content {
+      padding: 1.5rem;
+      flex-grow: 2;
+      display: flex;
+      flex-direction: column;
+    }
 
     .destination-desc {
       margin-bottom: 1rem;
@@ -472,16 +569,15 @@
 
     .activity-tags {
       display: flex;
-      
       flex-direction: row;
       gap: 0.5rem;
-      margin: 1rem 0 0 0  ;
+      margin: 1rem 0 0 0;
     }
 
     .tag {
       padding: 0.3rem 0.8rem;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
+      border-radius: 1.25rem;
       font-size: 0.8rem;
     }
 
@@ -496,17 +592,17 @@
       gap: 0.5rem;
       margin-top: auto;
       padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
     }
 
     .light-mode .friend-assignment {
       border-top: 1rem solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1rem ;
+      border-bottom: 1rem;
     }
 
     .assigned-friend {
-      width: 30px;
-      height: 30px;
+      width: 1.875rem;
+      height: 1.875rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -537,20 +633,20 @@
       color: #888;
       font-size: 0.9rem;
       margin-top: 2rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
       transition: border-color 0.5s ease, color 0.5s ease;
     }
 
     .light-mode .footer {
       color: #666;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     /* Animations */
     @keyframes fadeInDown {
       from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-1.875rem);
       }
       to {
         opacity: 1;
@@ -588,32 +684,32 @@
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(0.3125rem);
     }
 
     .modal-content {
       background: var(--card-bg-dark);
-      border-radius: 15px;
+      border-radius: 0.9375rem;
       padding: 2rem;
-      max-width: 600px;
+      max-width: 37.5rem;
       width: 90%;
       max-height: 80vh;
       overflow-y: auto;
       box-shadow: var(--shadow);
       position: relative;
       animation: modalAppear 0.5s ease-out;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 0.0625rem solid rgba(255, 255, 255, 0.1);
     }
 
     .light-mode .modal-content {
       background: var(--card-bg-light);
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     @keyframes modalAppear {
       from {
         opacity: 0;
-        transform: scale(0.8) translateY(-50px);
+        transform: scale(0.8) translateY(-3.125rem);
       }
       to {
         opacity: 1;
@@ -626,12 +722,12 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.1);
       padding-bottom: 1rem;
     }
 
     .light-mode .modal-header {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     .modal-title {
@@ -684,21 +780,25 @@
 
     /* Hide scrollbar for modal */
     .modal-content::-webkit-scrollbar {
-      width: 8px;
+      width: 0.5rem;
     }
 
     .modal-content::-webkit-scrollbar-track {
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
+      border-radius: 0.25rem;
     }
 
     .modal-content::-webkit-scrollbar-thumb {
       background: var(--primary);
-      border-radius: 4px;
+      border-radius: 0.25rem;
     }
 
     /* Responsive design */
-    @media (max-width: 768px) {
+    @media (max-width: 48rem) {
+      html {
+        font-size: 14px;
+      }
+      
       h1 {
         font-size: 2.2rem;
       }
@@ -719,7 +819,46 @@
       .destination-card {
         min-height: 34rem;
       }
-   
+      
+      .countdown-timer {
+        gap: 0.5rem;
+      }
+      
+      .countdown-unit {
+        min-width: 4rem;
+        padding: 0.5rem;
+      }
+      
+      .countdown-value {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 30rem) {
+      html {
+        font-size: 12px;
+      }
+      
+      .countdown-unit {
+        min-width: 3.5rem;
+        padding: 0.4rem;
+      }
+      
+      .countdown-value {
+        font-size: 1.5rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+      
+      .itinerary-display {
+        grid-template-columns: 1fr;
+      }
+      
+      .destination-card {
+        min-height: 30rem;
+      }
     }
   </style>
 </head>
@@ -740,6 +879,29 @@
     <div class="header-content">
       <h1>Wayanad Adventures</h1>
       <div class="header-subtitle">A road trip experience tailored for the squad</div>
+      
+      <!-- Countdown Timer -->
+      <div class="countdown-container">
+        <div class="countdown-title">Trip Starts In</div>
+        <div class="countdown-timer">
+          <div class="countdown-unit">
+            <div class="countdown-value" id="days">00</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="hours">00</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="minutes">00</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-value" id="seconds">00</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+      </div>
       
       <div class="friends-container">
         <div class="friend">
@@ -1040,7 +1202,7 @@
             </div>
             <div class="card-content">
               <p class="destination-desc">
-                900 Kandi Glass Bridge offers a thrilling skywalk above Wayanad’s rainforest, with panoramic views and adventure activities in the heart of nature.
+                900 Kandi Glass Bridge offers a thrilling skywalk above Wayanad's rainforest, with panoramic views and adventure activities in the heart of nature.
               </p>
               <div class="activity-tags">
                 <span class="tag">Bridge</span>
@@ -1054,7 +1216,7 @@
             <h3>Detailed Plan</h3>
             <ul class="detail-veiw">
               <li>Kandi900 Glass Bridge is our 2nd destination</li>
-              <li>Enjoy sweeping views of Wayanad’s rainforest and hills with a unique skywalk over the greenery.</li>
+              <li>Enjoy sweeping views of Wayanad's rainforest and hills with a unique skywalk over the greenery.</li>
               <li>We will spend approximately 1-1.5 hours there</li>
               <li>Then we will move to 1980's A Nostalgic Restaurant</li>
             </ul>
@@ -1181,6 +1343,32 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Countdown Timer Functionality
+      function updateCountdown() {
+        const tripDate = new Date('October 18, 2025 02:00:00').getTime();
+        const now = new Date().getTime();
+        const timeLeft = tripDate - now;
+        
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+          
+          document.getElementById('days').textContent = days.toString().padStart(2, '0');
+          document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+          document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+          document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        } else {
+          document.querySelector('.countdown-title').textContent = 'Trip Has Started!';
+          document.querySelector('.countdown-timer').innerHTML = '<div class="countdown-unit"><div class="countdown-value">Enjoy!</div></div>';
+        }
+      }
+      
+      // Update countdown immediately and then every second
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
       // Theme toggle functionality
       const themeToggle = document.getElementById('themeToggle');
       const body = document.body;
