@@ -9,40 +9,60 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --bg-1:#071014; --bg-2:#0f2a26; --card:#0e1b1a;
-  --accent:#55A79A; --accent-2:#2fb6a9; --muted:#828d8b;
+  /* dark theme defaults */
+  --bg-1:#071014;
+  --bg-2:#0f2a26;
+  --card:#0e1b1a;
+  --accent:#55A79A;
+  --accent-2:#2fb6a9;
+  --muted:#828d8b;
   --glass: rgba(255,255,255,0.06);
   --glass-2: rgba(255,255,255,0.03);
-  --round:14px; --container:1100px;
+  --round:14px;
+  --container:1100px;
   --card-h: 340px;
+  --text: #e7f6f4;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,-apple-system,Arial;
-  background: radial-gradient(1200px 600px at 10% 10%, rgba(47,182,169,0.06), transparent),
-              linear-gradient(180deg,var(--bg-1),var(--bg-2));
-  color:#e7f6f4; -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale; -webkit-text-size-adjust:100%;
+  margin:0;
+  font-family:Inter,system-ui,Segoe UI,Roboto,-apple-system,Arial;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(47,182,169,0.06), transparent),
+    linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-text-size-adjust:100%;
   overflow-y:auto;
 }
 
 /* Layout */
 .container{max-width:var(--container); margin:36px auto; padding:20px;}
 .header{
-  border-radius:calc(var(--round) + 6px); padding:28px; overflow:hidden;
+  border-radius:calc(var(--round) + 6px);
+  padding:28px;
+  overflow:hidden;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03)),
     linear-gradient(90deg, rgba(47,182,169,0.05), rgba(85,167,154,0.02));
   box-shadow: 0 12px 48px rgba(0,0,0,0.55);
-  display:grid; grid-template-columns:1fr 360px; gap:24px; align-items:stretch;
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:24px;
+  align-items:stretch;
 }
 .hero-left{padding:6px 4px}
 .title{
-  font-family:Anton, sans-serif; font-size: clamp(28px, 4.6vw, 48px);
-  margin:0 0 6px; letter-spacing:0.04em; line-height:1;
+  font-family:Anton, sans-serif;
+  font-size: clamp(28px, 4.6vw, 48px);
+  margin:0 0 6px;
+  letter-spacing:0.04em;
+  line-height:1;
   background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .subtitle{color:var(--muted); margin-bottom:16px; font-weight:500}
 .meta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
@@ -51,9 +71,33 @@ body{
 .count-item{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.04)); padding:12px 14px; border-radius:10px; min-width:64px; text-align:center}
 .count-value{font-weight:700; font-size:18px; color:var(--accent-2)}
 .count-label{font-size:12px; color:var(--muted)}
-.controls{display:flex; gap:12px; margin-top:18px; align-items:center}
-.btn{background:linear-gradient(180deg,var(--accent),var(--accent-2)); border:none; color:#052d2a; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600}
+.controls{display:flex; gap:12px; margin-top:18px; align-items:center; flex-wrap:wrap}
+.btn{background:linear-gradient(180deg,var(--accent),var(--accent-2)); border:none; color:#052d2a; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;}
+.btn:hover{transform: translateY(-2px); box-shadow: 0 6px 12px rgba(47,182,169,0.3);}
 .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.05); color:var(--muted)}
+.btn.ghost:hover{background:rgba(255,255,255,0.05); transform: translateY(-2px);}
+
+/* Spotify Button */
+.spotify-btn {
+  background: linear-gradient(180deg, #1DB954, #1ed760);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
+}
+.spotify-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(29, 185, 84, 0.4);
+}
+
 .hero-right{display:flex; gap:12px; align-items:center; justify-content:center; position:relative}
 .image-stack{width:100%; display:grid; grid-template-rows: 1fr 1fr; gap:10px}
 .img-card{position:relative; overflow:hidden; border-radius:12px; box-shadow:0 18px 40px rgba(0,0,0,0.5); height:140px}
@@ -62,6 +106,7 @@ body{
 .avatar-row{display:flex; gap:10px; align-items: center; margin-top:10px; flex-direction: row;}
 .avatar{width:46px;height:46px;border-radius:50%;display: grid;place-items: center;background-color:var(--glass); font-size:20px; color:#e7eeed; border:1px solid rgba(255,255,255,0.03)}
 .avatar-img{ overflow: hidden;width: 46px; height: 46px; border-radius: 50%;object-fit: contain;}
+
 /* Tabs */
 .tabs{display:flex; gap:8px; margin:18px 0; flex-wrap:wrap}
 .tab{padding:10px 14px; border-radius:999px; background:var(--glass-2); color:var(--muted); cursor:pointer; border:1px solid rgba(224, 219, 219, 0.02)}
@@ -90,7 +135,7 @@ body{
 .card-front img{width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition:transform .6s}
 .card:hover .card-front img{transform:scale(1.08)}
 .card-back{
-  background:linear-gradient(180deg, rgba(2,22,21,0.96), rgba(4,42,39,0.98));
+  background:var(--card);
   transform:rotateY(180deg); padding:16px; gap:8px; justify-content:flex-start;
   color:var(--muted);
 }
@@ -129,10 +174,36 @@ footer{margin:30px auto; text-align:center; color:var(--muted); font-size:14px}
   .hero-right{order:-1}
   .detail-card{grid-template-columns:1fr; max-height:92vh; overflow:auto}
 }
-@media (max-width:420px){
-  .avatar{width:40px;height:40px}
-  .img-card{height:110px}
-  :root{--card-h:320px}
+@media (max-width:668px) {
+  .container { margin: 20px auto; padding: 15px; }
+  .header { padding: 20px; gap: 18px; }
+  .controls { gap: 10px; }
+  .controls .btn { padding: 8px 12px; font-size: 14px; }
+  .spotify-btn { padding: 8px 12px; font-size: 14px; }
+  .meta-row { gap: 8px; }
+  .pill { padding: 8px 10px; font-size: 13px; }
+  .countdown { gap: 8px; margin-top: 14px; }
+  .count-item { padding: 10px 12px; min-width: 56px; }
+  .count-value { font-size: 16px; }
+  .count-label { font-size: 11px; }
+  .grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+  .card { height: 320px; }
+  .img-card { height: 120px; }
+  .avatar { width: 40px; height: 40px; font-size: 18px; }
+}
+@media (max-width:480px) {
+  .container { margin: 12px auto; padding: 12px; }
+  .header { padding: 16px; gap: 14px; }
+  .controls { flex-direction: column; align-items: flex-start; }
+  .controls .btn { width: 100%; justify-content: center; }
+  .spotify-btn { width: 100%; justify-content: center; }
+  .meta-row { justify-content: center; }
+  .countdown { justify-content: center; }
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .card { height: 300px; }
+  .img-card { height: 100px; }
+  .avatar { width: 36px; height: 36px; font-size: 16px; }
+  .tabs { justify-content: center; }
 }
 
 /* focus state for keyboard users */
@@ -164,6 +235,12 @@ footer{margin:30px auto; text-align:center; color:var(--muted); font-size:14px}
         <div class="controls">
           <button class="btn" id="openGuidelines"><i class="fas fa-book-open"></i>&nbsp; Guidelines</button>
           <button class="btn ghost" id="toggleTheme"><i class="fas fa-sun"></i>&nbsp; Light</button>
+          
+          <!-- Spotify Button Link (replaces iframe) -->
+          <a href="https://open.spotify.com/playlist/3WYcf7gpY5Hoz5rPU117HW?si=ra8leoBhQCmw31HX1xlMkA&pi=g2rtF0TpRceA9" target="_blank" rel="noopener noreferrer" class="spotify-btn">
+            <i class="fab fa-spotify"></i> Road Trip Playlist
+          </a>
+          
           <div style="flex:1"></div>
           <div style="color:var(--muted); font-size:13px; align-self:center">Car: KA51MY5521</div>
         </div>
@@ -173,7 +250,7 @@ footer{margin:30px auto; text-align:center; color:var(--muted); font-size:14px}
         <div style="width:100%">
           <div class="image-stack">
             <div class="img-card" title="Trip start">
-              <img src="Resources/Screenshot_20250926-183849.png" alt="Trip Start — screenshot">
+              <img src="Resources/glass-bridge-900-kandi-wayanad.jpg" alt="Trip Start — screenshot">
             </div>
             <div style="display:flex; gap:10px">
               <div class="img-card" style="flex:1">
@@ -190,7 +267,7 @@ footer{margin:30px auto; text-align:center; color:var(--muted); font-size:14px}
             <div class="avatar" title="Sreyas"><div class="avatar-img"><img src="Resources/sreyas_imresizer.png" alt=""></div></div>
             <div class="avatar" title="Barnita"><div class="avatar-img"><img src="Resources/Bar_imresizer.png" alt=""></div></div>
             <div class="avatar" title="Bipradip"><div class="avatar-img"><img src="Resources/Bipradip_imresizer.png" alt=""></div></div>
-            <div class="avatar" title="Tushar">T</div>
+            <div class="avatar" title="Tushar"><div class="avatar-img"><img src="Resources/WhatsApp Image 2025-..._imresizer.png" alt=""></div></div>
           </div>
         </div>
       </aside>
@@ -581,23 +658,54 @@ const guidelinesModal = document.getElementById('guidelinesModal');
 document.getElementById('openGuidelines').addEventListener('click', ()=>{ guidelinesModal.style.display='flex'; guidelinesModal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; });
 document.getElementById('closeGuidelines').addEventListener('click', ()=>{ guidelinesModal.style.display='none'; guidelinesModal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; });
 
-/* Theme toggle - light/dark inversion */
+/* Theme toggle - light/dark inversion (comprehensive) */
 const themeBtn = document.getElementById('toggleTheme');
 let dark = true;
 themeBtn.addEventListener('click', ()=>{
   dark = !dark;
   if(!dark){
+    /* Light mode variables */
     document.documentElement.style.setProperty('--bg-1','#f6fbfb');
     document.documentElement.style.setProperty('--bg-2','#dff3f1');
-    document.documentElement.style.setProperty('--muted','#828d8b');
-    document.body.style.color='#00000';
+    document.documentElement.style.setProperty('--card','#ffffff');
+    document.documentElement.style.setProperty('--accent','#0f8b74');
+    document.documentElement.style.setProperty('--accent-2','#2aa58f');
+    document.documentElement.style.setProperty('--muted','#4b4b4b');
+    document.documentElement.style.setProperty('--glass','rgba(0,0,0,0.04)');
+    document.documentElement.style.setProperty('--glass-2','rgba(0,0,0,0.02)');
+    document.documentElement.style.setProperty('--text','#111111');
+    document.body.style.background = 'linear-gradient(180deg, var(--bg-1), var(--bg-2))';
+    document.body.style.color = 'var(--text)';
     themeBtn.innerHTML = '<i class="fas fa-moon"></i>&nbsp; Dark';
+    
+    // Update modal backgrounds for light theme
+    document.querySelectorAll('.detail-card, .modal .card').forEach(el => {
+      el.style.background = 'linear-gradient(180deg, #f0f8f7, #e6f5f3)';
+    });
+    
+    // Update header background for light theme
+    document.querySelector('.header').style.background = 'linear-gradient(180deg, rgba(0,0,0,0.03), rgba(255,255,255,0.02))';
   } else {
+    /* Dark mode variables (restore defaults) */
     document.documentElement.style.setProperty('--bg-1','#071014');
     document.documentElement.style.setProperty('--bg-2','#0f2a26');
+    document.documentElement.style.setProperty('--card','#0e1b1a');
+    document.documentElement.style.setProperty('--accent','#55A79A');
+    document.documentElement.style.setProperty('--accent-2','#2fb6a9');
     document.documentElement.style.setProperty('--muted','#828d8b');
-    document.body.style.color='#e7f6f4';
+    document.documentElement.style.setProperty('--glass','rgba(255,255,255,0.06)');
+    document.documentElement.style.setProperty('--glass-2','rgba(255,255,255,0.03)');
+    document.documentElement.style.setProperty('--text','#e7f6f4');
+    document.body.style.background = 'radial-gradient(1200px 600px at 10% 10%, rgba(47,182,169,0.06), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2))';
+    document.body.style.color = 'var(--text)';
     themeBtn.innerHTML = '<i class="fas fa-sun"></i>&nbsp; Light';
+    
+    // Update modal backgrounds for dark theme
+    document.querySelectorAll('.detail-card, .modal .card').forEach(el => {
+      el.style.background = 'linear-gradient(180deg,#021615, #062827)';
+    });
+    
+    document.querySelector('.header').style.background = 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03))';
   }
 });
 
@@ -607,6 +715,42 @@ document.addEventListener('keyup', e=>{ if(e.key === 'Tab') document.body.classL
 /* Prevent click on interactive elements inside back/front from toggling flip */
 document.querySelectorAll('.card-face a, .card-face button').forEach(el=>{
   el.addEventListener('click', (e)=> e.stopPropagation());
+});
+
+/* Fix for mobile card flipping - ensure cards can be flipped back */
+document.addEventListener('DOMContentLoaded', function() {
+  // Add touch event listeners for mobile devices
+  if ('ontouchstart' in window) {
+    document.querySelectorAll('.card').forEach(card => {
+      // Remove hover behavior on mobile
+      card.classList.remove('hover-enabled');
+      
+      // Add explicit touch handling
+      card.addEventListener('touchstart', function(e) {
+        // Don't flip if user is trying to scroll
+        if (e.touches.length > 1) return;
+        
+        // Store initial touch position
+        this.touchStartX = e.touches[0].clientX;
+        this.touchStartY = e.touches[0].clientY;
+        this.touchStartTime = Date.now();
+      });
+      
+      card.addEventListener('touchend', function(e) {
+        // Don't flip if user is trying to scroll
+        if (e.touches.length > 0) return;
+        
+        const touchEndTime = Date.now();
+        const touchDuration = touchEndTime - this.touchStartTime;
+        
+        // Only flip if it was a quick tap (not a long press)
+        if (touchDuration < 300) {
+          // Toggle flip state
+          this.classList.toggle('flip');
+        }
+      });
+    });
+  }
 });
 </script>
 </body>
