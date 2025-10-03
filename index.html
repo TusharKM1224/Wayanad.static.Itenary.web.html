@@ -573,14 +573,15 @@ function enableFlipForGrid(gridSelector){
     card.addEventListener('click', (e)=>{
       // if clicking interactive element inside card, don't toggle
       if(e.target.closest('a,button')) return;
-      card.classList.remove('flip');
+      card.classList.toggle('flip');
     });
     // keyboard accessibility: Enter toggles
     card.addEventListener('click', (e)=>{
-      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.add('flip'); }
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flip'); }
     });
     // double-click opens detail overlay (optional)
     card.addEventListener('dblclick', ()=> openDetailFromCard(card));
+    
   });
 }
 enableFlipForGrid('#grid-day1');
