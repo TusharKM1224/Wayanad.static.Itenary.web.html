@@ -577,7 +577,7 @@ function enableFlipForGrid(gridSelector){
     });
     // keyboard accessibility: Enter toggles
     card.addEventListener('click', (e)=>{
-      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flip'); }
+      if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.remove('flip'); }
     });
     // double-click opens detail overlay (optional)
     card.addEventListener('dblclick', ()=> openDetailFromCard(card));
