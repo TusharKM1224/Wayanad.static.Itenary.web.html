@@ -573,7 +573,7 @@ function enableFlipForGrid(gridSelector){
     card.addEventListener('click', (e)=>{
       // if clicking interactive element inside card, don't toggle
       if(e.target.closest('a,button')) return;
-      card.classList.toggle('flip');
+      card.classList.add('flip');
     });
     // keyboard accessibility: Enter toggles
     card.addEventListener('click', (e)=>{
