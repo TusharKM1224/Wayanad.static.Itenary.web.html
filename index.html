@@ -463,20 +463,17 @@
       box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.3);
     }
 
+    /* 3D Flip Card Styles */
     .card-inner {
       width: 100%;
       height: 100%;
       transition: transform 0.8s;
       transform-style: preserve-3d;
       position: relative;
-      padding: auto;
     }
 
     .destination-card.flipped .card-inner {
       transform: rotateY(180deg);
-    }
-    .detail-veiw{
-      margin-left: 2rem;
     }
 
     .card-front, .card-back {
@@ -488,12 +485,11 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 2rem;
+      border-radius: 0.9375rem;
     }
 
     .card-back {
       transform: rotateY(180deg);
-      padding: 1.5rem;
       overflow-y: auto;
     }
 
@@ -599,8 +595,7 @@
     }
 
     .light-mode .friend-assignment {
-      border-top: 1rem solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1rem;
+      border-top: 0.0625rem solid rgba(0, 0, 0, 0.1);
     }
 
     .assigned-friend {
@@ -619,6 +614,10 @@
 
     .girl {
       background: var(--primary);
+    }
+
+    .detail-veiw {
+      margin-left: 1rem;
     }
 
     /* Animation for the cards */
@@ -1225,19 +1224,25 @@
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Tushar and Sreyas will pick up the car at 7:30 PM.</li>
-              <li>We will start our trip at 2:00 AM.</li>
-              <li>The journey is about 290–300 km, so driving will be shared:
-                <ul class="detail-veiw">
-                  <li>First half (Bengaluru to Mysore): Tushar will drive.</li>
-                  <li>Second half (Mysore to Wayanad): Sreyas will drive.</li>
-                </ul>
-              </li>
-              <li>Target arrival in Wayanad: around 11:00 AM.</li>
-              <li>Four breaks are planned along the way.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Wayanad, Here We Come !!</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Tushar and Sreyas will pick up the car at 7:30 PM.</li>
+                <li>We will start our trip at 2:00 AM.</li>
+                <li>The journey is about 290–300 km, so driving will be shared:
+                  <ul class="detail-veiw">
+                    <li>First half (Bengaluru to Mysore): Tushar will drive.</li>
+                    <li>Second half (Mysore to Wayanad): Sreyas will drive.</li>
+                  </ul>
+                </li>
+                <li>Target arrival in Wayanad: around 11:00 AM.</li>
+                <li>Four breaks are planned along the way.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1262,17 +1267,22 @@
                 <span class="tag">Trekking</span>
                 <span class="tag">Caves</span>
               </div>
-          
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Phantom Rock Viewpoint will be our 1st destination</li>
-              <li>It is a famous tourist destination, featuring a natural metamorphic rock formation resembling a human skull.</li>
-              <li>We will spend approximately 1-1.5 hours there.</li>
-              <li>Then we will move to our next destination, Edakkal Caves.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Phantom Rock</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Phantom Rock Viewpoint will be our 1st destination</li>
+                <li>It is a famous tourist destination, featuring a natural metamorphic rock formation resembling a human skull.</li>
+                <li>We will spend approximately 1-1.5 hours there.</li>
+                <li>Then we will move to our next destination, Edakkal Caves.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1297,17 +1307,22 @@
                 <span class="tag">Ancient carvings</span>
                 <span class="tag">Caves</span>
               </div>
-              
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Edakkal Caves is our 2nd Destination</li>
-              <li>We will trek through the cave to see ancient Stone Age carvings along the path, featuring Mesolithic Age scripts, weaponry figures, symbols, etc.</li>
-              <li>We will spend approximately 1-1.5 hours there.</li>
-              <li>Then we will move to our next destination, Karapuzha Dam.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Edakkal Caves</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Edakkal Caves is our 2nd Destination</li>
+                <li>We will trek through the cave to see ancient Stone Age carvings along the path, featuring Mesolithic Age scripts, weaponry figures, symbols, etc.</li>
+                <li>We will spend approximately 1-1.5 hours there.</li>
+                <li>Then we will move to our next destination, Karapuzha Dam.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1332,17 +1347,22 @@
                 <span class="tag">Photography</span>
                 <span class="tag">Fun Activities</span>
               </div>
-             
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Karapuzha Dam Adventure Park is our 3rd destination.</li>
-              <li>Here we can do multiple activities like zip-line, giant swing, space tower, etc.</li>
-              <li>We will spend approximately 2-2.5 hours there.</li>
-              <li>Then we will move to our Airbnb.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Karapuzha Dam</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Karapuzha Dam Adventure Park is our 3rd destination.</li>
+                <li>Here we can do multiple activities like zip-line, giant swing, space tower, etc.</li>
+                <li>We will spend approximately 2-2.5 hours there.</li>
+                <li>Then we will move to our Airbnb.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1367,17 +1387,22 @@
                 <span class="tag">Wayanad night</span>
                 <span class="tag">Barbecues</span>
               </div>
-              
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Aanandam Villa is our Day 1 last destination and place to rest and do fun activities.</li>
-              <li>We reach there by 5-5:30 PM, then we will take rest and start night activities.</li>
-              <li>We start our night activities by 7:30 PM and end by 12:00 AM.</li>
-              <li>Then get ready for Day 2 Adventures.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">The Airbnb (Aanandam Villa)</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Aanandam Villa is our Day 1 last destination and place to rest and do fun activities.</li>
+                <li>We reach there by 5-5:30 PM, then we will take rest and start night activities.</li>
+                <li>We start our night activities by 7:30 PM and end by 12:00 AM.</li>
+                <li>Then get ready for Day 2 Adventures.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1405,17 +1430,22 @@
                 <span class="tag">Chill</span>
                 <span class="tag">Ethnic Photography</span>
               </div>
-              
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Wake up 7-7:30 AM</li>
-              <li>Have breakfast at Airbnb or go out for breakfast somewhere!</li>
-              <li>Then come back and hangout, get some ethnic photoshoot, then get ready for our Day 2 Adventures by 10:30 AM</li>
-              <li>Starting from Soochipara Falls</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">The Airbnb (Aanandam Villa)</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Wake up 7-7:30 AM</li>
+                <li>Have breakfast at Airbnb or go out for breakfast somewhere!</li>
+                <li>Then come back and hangout, get some ethnic photoshoot, then get ready for our Day 2 Adventures by 10:30 AM</li>
+                <li>Starting from Soochipara Falls</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -1440,21 +1470,27 @@
                 <span class="tag">Trekking</span>
                 <span class="tag">Rockclimbing</span>
               </div>
-             
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Soochipara Waterfalls is our 1st destination</li>
-              <li>It is a three-tiered waterfall in lush forests, also featuring trekking and rock climbing</li>
-              <li>We will spend approximately 1-2 hours there</li>
-              <li>Then we will move to Kandi900 Glass Bridge</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Soochipara Falls</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Soochipara Waterfalls is our 1st destination</li>
+                <li>It is a three-tiered waterfall in lush forests, also featuring trekking and rock climbing</li>
+                <li>We will spend approximately 1-2 hours there</li>
+                <li>Then we will move to Kandi900 Glass Bridge</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Destination 7 -->
+      
+      <!-- Destination 8 -->
       <div class="destination-card">
         <div class="card-inner">
           <div class="card-front">
@@ -1474,22 +1510,27 @@
                 <span class="tag">Trekking</span>
                 <span class="tag">Adventure</span>
               </div>
-             
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Kandi900 Glass Bridge is our 2nd destination</li>
-              <li>Enjoy sweeping views of Wayanad's rainforest and hills with a unique skywalk over the greenery.</li>
-              <li>We will spend approximately 1-1.5 hours there</li>
-              <li>Then we will move to 1980's A Nostalgic Restaurant</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Kandi900 Glass Bridge</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Kandi900 Glass Bridge is our 2nd destination</li>
+                <li>Enjoy sweeping views of Wayanad's rainforest and hills with a unique skywalk over the greenery.</li>
+                <li>We will spend approximately 1-1.5 hours there</li>
+                <li>Then we will move to 1980's A Nostalgic Restaurant</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Destination 8 -->
+      <!-- Destination 9 -->
       <div class="destination-card">
         <div class="card-inner">
           <div class="card-front">
@@ -1509,21 +1550,26 @@
                 <span class="tag">Ethnic food</span>
                 <span class="tag">Food Tasting</span>
               </div>
-              
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>At 1980's we will have our lunch suggested by @Sreyas</li>
-              <li>We will spend 2-2.5 hours here</li>
-              <li>Then we will move to Banasura Sagar</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">1980's A Nostalgic Restaurant</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>At 1980's we will have our lunch suggested by @Sreyas</li>
+                <li>We will spend 2-2.5 hours here</li>
+                <li>Then we will move to Banasura Sagar</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Destination 9 -->
+      <!-- Destination 10 -->
       <div class="destination-card">
         <div class="card-inner">
           <div class="card-front">
@@ -1543,16 +1589,21 @@
                 <span class="tag">Boat trip</span>
                 <span class="tag">Trekking</span>
               </div>
-              
             </div>
           </div>
           <div class="card-back">
-            <h3>Detailed Plan</h3>
-            <ul class="detail-veiw">
-              <li>Banasura Sagar is our last destination of our trip.</li>
-              <li>It is a major tourist attraction renowned for being the largest earthen dam in India, the second largest dam in Asia. It features boat trips, trekking, and scenic views.</li>
-              <li>From here we will make on-spot decisions for our further trip.</li>
-            </ul>
+            <div class="card-header">
+              <h3 class="destination-name">Banasura Sagar</h3>
+              <div class="destination-time"><i class="far fa-clock"></i> Detailed Plan</div>
+            </div>
+            <div class="card-content">
+              <h3>Detailed Plan</h3>
+              <ul class="detail-veiw">
+                <li>Banasura Sagar is our last destination of our trip.</li>
+                <li>It is a major tourist attraction renowned for being the largest earthen dam in India, the second largest dam in Asia. It features boat trips, trekking, and scenic views.</li>
+                <li>From here we will make on-spot decisions for our further trip.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
