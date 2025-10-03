@@ -710,7 +710,7 @@ themeBtn.addEventListener('click', ()=>{
 });
 
 /* Keyboard focus detection */
-document.addEventListener('touchstart', e=>{ if(e.key === 'Tab') document.body.classList.add('show-focus'); });
+document.addEventListener('touchend', e=>{ if(e.key === 'Tab') document.body.classList.add('show-focus'); });
 
 /* Prevent click on interactive elements inside back/front from toggling flip */
 document.querySelectorAll('.card-face a, .card-face button').forEach(el=>{
