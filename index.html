@@ -391,6 +391,11 @@
             padding-left: 2.5rem;    
         }
 
+        /* .modal-body ul li{
+          margin-left: 1 rem;
+        } */
+       
+
         /* Footer */
         footer {
             text-align: center;
@@ -950,43 +955,6 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
         }
-
-        /* Spotify Embed Styles */
-        .spotify-embed-container {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .spotify-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-        }
-
-        .spotify-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .spotify-title i {
-            color: #1DB954;
-        }
-
-        .spotify-embed {
-            width: 100%;
-            height: 380px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
     </style>
 </head>
 <body>
@@ -1039,7 +1007,7 @@
                         <i class="fas fa-book"></i>
                         Guidelines
                     </button>
-                    <button class="btn btn-spotify" id="viewSpotify">
+                    <button class="btn btn-spotify" id="spotifyLink">
                         <i class="fab fa-spotify"></i>
                         Spotify Playlist
                     </button>
@@ -1049,30 +1017,6 @@
         </header>
 
         <main>
-            <!-- Spotify Playlist Embed -->
-            <section class="spotify-embed-container" id="spotifySection">
-                <div class="spotify-header">
-                    <h2 class="spotify-title">
-                        <i class="fab fa-spotify"></i>
-                        Road Trip Playlist
-                    </h2>
-                    <button class="btn btn-secondary" id="hideSpotify">
-                        <i class="fas fa-times"></i>
-                        Hide
-                    </button>
-                </div>
-                <div class="spotify-embed">
-                    <iframe src="https://open.spotify.com/embed/playlist/3WYcf7gpY5Hoz5rPU117HW?utm_source=generator&theme=0" 
-                            width="100%" 
-                            height="100%" 
-                            frameBorder="0" 
-                            allowfullscreen="" 
-                            allow="autoplay; clipboard-write; fullscreen; picture-in-picture" 
-                            loading="lazy">
-                    </iframe>
-                </div>
-            </section>
-
             <!-- Hero Section with Avatars -->
             <section class="hero-section">
                 <div class="hero-content">
@@ -1508,26 +1452,17 @@
             const guidelinesModal = document.getElementById('guidelinesModal');
             const detailModal = document.getElementById('detailModal');
             const viewGuidelinesBtn = document.getElementById('viewGuidelines');
-            const viewSpotifyBtn = document.getElementById('viewSpotify');
-            const hideSpotifyBtn = document.getElementById('hideSpotify');
-            const spotifySection = document.getElementById('spotifySection');
+            const spotifyLinkBtn = document.getElementById('spotifyLink');
             const closeModalBtns = document.querySelectorAll('.close-modal');
-            
-            // Initially hide the Spotify section
-            spotifySection.style.display = 'none';
             
             viewGuidelinesBtn.addEventListener('click', () => {
                 guidelinesModal.classList.add('active');
             });
             
-            // Spotify Button - Show/Hide the embedded playlist
-            viewSpotifyBtn.addEventListener('click', () => {
-                spotifySection.style.display = 'block';
-                spotifySection.scrollIntoView({ behavior: 'smooth' });
-            });
-            
-            hideSpotifyBtn.addEventListener('click', () => {
-                spotifySection.style.display = 'none';
+            // Spotify Link Button
+            spotifyLinkBtn.addEventListener('click', () => {
+                // Replace with your actual Spotify playlist link
+                window.open('https://open.spotify.com/playlist/3WYcf7gpY5Hoz5rPU117HW?si=ra8leoBhQCmw31HX1xlMkA&pi=g2rtF0TpRceA9', '_blank');
             });
             
             closeModalBtns.forEach(btn => {
