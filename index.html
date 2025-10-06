@@ -46,6 +46,49 @@
             padding: 0 20px;
         }
 
+        /* Music Controls */
+        .music-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .music-info {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-right: 5px;
+        }
+
         /* Header Styles */
         header {
             padding: 2rem 0;
@@ -391,11 +434,6 @@
             padding-left: 2.5rem;    
         }
 
-        /* .modal-body ul li{
-          margin-left: 1 rem;
-        } */
-       
-
         /* Footer */
         footer {
             text-align: center;
@@ -553,6 +591,16 @@
         font-size: 1.1rem;
         padding: 0 1rem;
     }
+    
+    .music-controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 12px;
+    }
+    
+    .music-info {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -614,6 +662,16 @@
     
     .header-content {
         padding: 0 1rem;
+    }
+    
+    .music-controls {
+        padding: 8px 10px;
+    }
+    
+    .music-btn {
+        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
     }
 }
 
@@ -958,6 +1016,14 @@
     </style>
 </head>
 <body>
+    <!-- Music Controls -->
+    <div class="music-controls">
+        <span class="music-info">Music</span>
+        <button class="music-btn" id="muteBtn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
     <div class="floating floating-1"></div>
     <div class="floating floating-2"></div>
     <div class="floating floating-3"></div>
@@ -1397,8 +1463,34 @@
         </div>
     </div>
 
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="Resources/WhatsApp Audio 2025-10-07 at 12.17.45 AM.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Music Controls
+            const audio = document.getElementById('backgroundMusic');
+            const muteBtn = document.getElementById('muteBtn');
+            
+            // Set default volume to 50% and start playing
+            audio.volume = 0.04;
+            audio.play().catch(e => {
+                console.log("Autoplay prevented. User interaction required.");
+            });
+            
+            // Mute/Unmute functionality
+            muteBtn.addEventListener('click', function() {
+                audio.muted = !audio.muted;
+                if (audio.muted) {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                } else {
+                    muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                }
+            });
+            
             // Countdown Timer
             function updateCountdown() {
                 const tripDate = new Date('October 18, 2025 2:00:00').getTime();
